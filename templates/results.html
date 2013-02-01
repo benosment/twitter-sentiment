@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block body %}
+  <ul class=results>
+  <b>Number of positive tweets: {{ num_pos }} </b> </br>
+  <b>Number of negative tweets: {{ num_neg }} </b> </br>
+  <b>Percentage positive: {{ percentage }} </b> </br>
+  {% for result in results %}
+    {% if result.sentiment == 'pos' %}
+      <div class=flash><em>{{ result.user }}</em> {{ result.text }} </div>
+    {% else %}
+      <div class=error><em>{{ result.user }}</em> {{ result.text }} </div>
+    {% endif %}
+  {% else %}
+    <li><em>No results</em>
+  {% endfor %}
+  </ul>
+{% endblock %}
+
